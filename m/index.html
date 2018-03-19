@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>首页 - Cipullo官网</title>
+		<link href="//cdn.staticfile.org/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+		<link href="//cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css" rel="stylesheet">
+		<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.min.css" />
+	</head>
+
+	<body id="app">
+		<header>
+			<a class="header-menu" href="#" v-on:click.prevent="showSilde"></a>
+		</header>
+		<nav class="nav" v-bind:class="{ 'nav-show': isShow, 'nav-hide': !isShow }" @click="hideSilde" @touchmove="hideSilde">
+			<div class="nav-container" @click.stop>
+				<div class="nav-logo"><a href="./"></a></div>
+				<div class="nav-list" @touchmove.stop>
+					<div class="nav-list-item" v-for="nav in index.nav">
+						<div class="nav-list-hd">
+							<a :href="nav.head.url" @click="nav.head.open = !nav.head.open">{{ nav.head.text }}<span v-if="nav.sub.length" v-bind:class="{ 'nav-icon-open': nav.head.open}" class="nav-icon"></span></a>
+						</div>
+						<ul v-if="nav.head.open">
+							<li v-for="sub in nav.sub">
+								<a :href="sub.url">{{sub.text}}</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="nav-close" @click="hideSilde"></div>
+		</nav>
+		<div class="swiper-container" id="indexBanner">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="img/banner1.png" />
+					<div class="swiper-text ani" swiper-animate-effect="fade" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+						<div class="banner-title">style</div>
+						<div class="banner-text">秉承 [爱] 与 [美学] 的设计理念的同时，展现对珠宝设计及美学融合的不懈追求和独到见解</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<img src="img/banner2.png" />
+					<div class="swiper-text ani" swiper-animate-effect="fade" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+						<div class="banner-title">Acme eternal love</div>
+						<div class="banner-text">见证了文艺复兴时期伟大诗人但丁与贝特丽斯的柏拉图之恋赋予了Cipullo璀璨臻美的情怀</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-left swiper-btn"></div>
+			<div class="swiper-right swiper-btn"></div>
+		</div>
+
+		<div class="index-brand">
+			<div class="index-brand-title">品牌世界</div>
+			<div class="index-brand-item" v-for="ib in index.brand">
+				<a :href="ib.url">
+					<img :src="ib.img" />
+					<!--<span>{{ib.text}}</span>-->
+				</a>
+			</div>
+		</div>
+
+		<div class="index-series">
+			<a :href="index.series.url">
+				<img :src="index.series.img" />
+			</a>
+		</div>
+	</body>
+
+</html>
+<script src="//cdn.staticfile.org/vue/1.0.28/vue.min.js"></script>
+<script src="//cdn.bootcss.com/Swiper/3.4.0/js/swiper.min.js"></script>
+<script src="js/swiper.animate.min.js"></script>
+<script src="js/script.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		var indexBanner = new Swiper('#indexBanner', {
+			loop: true,
+			autoplay: 5000,
+			onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
+				swiperAnimateCache(swiper); //隐藏动画元素 
+				swiperAnimate(swiper); //初始化完成开始动画
+			},
+			onSlideChangeEnd: function(swiper) {
+				swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+			},
+			prevButton: '.swiper-left',
+			nextButton: '.swiper-right',
+		})
+	}
+</script>

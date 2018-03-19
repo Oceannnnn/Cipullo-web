@@ -1,0 +1,52 @@
+文件夹 PATH 列表
+卷序列号为 0000007F 0009:2BE5
+E:.
+    tree.txt
+    小清新1.png
+    小清新2.png
+    小清新3.png
+    
+    彩虹1.png +
+    彩虹2.png
+    彩虹3.png
+    彩虹4.png
+    
+    收藏品.png 
+    
+    时空1.png 
+    时空2.png
+    时空3.png
+    
+    星座1.png +
+    星座2.png
+    星座3.png
+    星座4.png
+    
+    爱侨1.png +
+    爱侨2.png
+    爱侨3.png
+    爱侨4.png
+    
+    相爱1.png +
+    相爱2.png
+    相爱3.png
+    
+    纯真1.png +
+    纯真2.png
+    纯真3.png
+    
+    绽放1.png +
+    绽放2.png
+    绽放3.png
+    绽放4.png
+    
+    萦绕1.png
+    萦绕2.png
+    萦绕3.png
+    萦绕4.png
+    
+    蕾丝1.png +
+    蕾丝2.png
+    
+没有子文件夹 
+

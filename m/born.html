@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>品牌诞生 - Cipullo官网</title>
+		<link href="//cdn.staticfile.org/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+		<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.min.css" />
+	</head>
+
+	<body id="app" class="brand-body">
+		<header>
+			<a class="header-menu" href="#" v-on:click.prevent="showSilde"></a>
+		</header>
+		<nav class="nav" v-bind:class="{ 'nav-show': isShow, 'nav-hide': !isShow }" @click="hideSilde" @touchmove="hideSilde">
+			<div class="nav-container" @click.stop>
+				<div class="nav-logo"><a href="./"></a></div>
+				<div class="nav-list" @touchmove.stop>
+					<div class="nav-list-item" v-for="nav in index.nav">
+						<div class="nav-list-hd">
+							<a :href="nav.head.url" @click="nav.head.open = !nav.head.open">{{ nav.head.text }}<span v-if="nav.sub.length" v-bind:class="{ 'nav-icon-open': nav.head.open}" class="nav-icon"></span></a>
+						</div>
+						<ul v-if="nav.head.open">
+							<li v-for="sub in nav.sub">
+								<a :href="sub.url">{{sub.text}}</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="nav-close" @click="hideSilde"></div>
+		</nav>
+		<div class="brand-container">
+			<img :src="'img/'+brand.born.img"/>
+			<div class="text-indent">{{{brand.born.text}}}</div>
+		</div>
+	</body>
+
+</html>
+<script src="//cdn.staticfile.org/vue/1.0.28/vue.min.js"></script>
+<script src="js/script.js"></script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>Collection(三色碧玺) - Cipullo官网</title>
+		<link href="//cdn.staticfile.org/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+		<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.min.css" />
+	</head>
+
+	<body id="app" @touchmove="sno = false">
+		<header>
+			<a class="header-menu" href="#" v-on:click.prevent="showSilde"></a>
+		</header>
+		<nav class="nav" v-bind:class="{ 'nav-show': isShow, 'nav-hide': !isShow }" @click="hideSilde" @touchmove="hideSilde">
+			<div class="nav-container" @click.stop>
+				<div class="nav-logo"><a href="./"></a></div>
+				<div class="nav-list" @touchmove.stop>
+					<div class="nav-list-item" v-for="nav in index.nav">
+						<div class="nav-list-hd">
+							<a :href="nav.head.url" @click="nav.head.open = !nav.head.open">{{ nav.head.text }}<span v-if="nav.sub.length" v-bind:class="{ 'nav-icon-open': nav.head.open}" class="nav-icon"></span></a>
+						</div>
+						<ul v-if="nav.head.open">
+							<li v-for="sub in nav.sub">
+								<a :href="sub.url">{{sub.text}}</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="nav-close" @click="hideSilde"></div>
+		</nav>
+		<section class="series-nav" @touchmove.stop.prevent>
+			<div class="series-nav-title" :class="{'series-nav-open': sno}" @click="sno = !sno">
+				<span>Collection(三色碧玺)</span>
+				<i></i>
+			</div>
+			<ul :class="{'series-ul-open bounceInDown animated ': sno}">
+				<li v-for="nav in index.nav[1].sub" @touchstart="sn_ts($index)" @touchend="sn_te($index)"><a :href="nav.url">{{nav.text }}</a></li>
+			</ul>
+		</section>
+		<div class="swiper-container series-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" v-for="i in series.collect.img"><img :src="'img/series/'+i" /></div>
+			</div>
+			<div class="series-text">{{series.collect.text}}</div>
+		</div>
+	</body>
+
+</html>
+<script src="//cdn.staticfile.org/vue/1.0.28/vue.min.js"></script>
+<script src="js/script.js"></script>
